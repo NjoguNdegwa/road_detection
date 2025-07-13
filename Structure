@@ -1,0 +1,18 @@
+road-sign-detection/
+│
+├── README.md
+├── requirements.txt
+├── data/
+│    ├── train/
+│    ├── test/
+│
+├── models/
+│    └── saved_model.pth
+│
+├── scripts/
+│    ├── train.py
+│    ├── detect.py
+│    ├── preprocess.py
+│
+└── notebooks/
+     └── exploration.ipynb
