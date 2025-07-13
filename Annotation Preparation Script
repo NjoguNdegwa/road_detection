@@ -1,0 +1,21 @@
+import csv
+import json
+from collections import defaultdict
+
+def csv_to_json(csv_file, json_file):
+    annotations = defaultdict(lambda: {"boxes": [], "labels": []})
+    
+    with open(csv_file, newline='') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            img = row['image_name']
+            box = [int(row['xmin']), int(row['ymin']), int(row['xmax']), int(row['ymax'])]
+            label = int(row['label'])
+            annotations[img]['boxes'].append(box)
+            annotations[img]['labels'].append(label)
+    
+    with open(json_file, 'w') as f:
+        json.dump(annotations, f, indent=2)
+
+if __name__ == "__main__":
+    csv_to_json('annotations.csv', 'annotations.json')
